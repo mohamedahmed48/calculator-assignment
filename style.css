@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,92 +8,308 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  font-family: 'Inter', sans-serif;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background:
+    radial-gradient(circle at top left, #dce7ff, transparent 40%),
+    linear-gradient(135deg, #eef2ff, #e9e5ff);
+  transition: background 0.3s;
 }
 
 .calculator {
-  background: white;
-  width: 340px;
+  width: 100%;
+  max-width: 410px;
+  background: rgba(255,255,255,0.92);
   padding: 25px;
+  border-radius: 28px;
+  box-shadow: 0 25px 70px rgba(42, 45, 100, 0.15);
+  border: 1px solid rgba(255,255,255,0.8);
+  transition: 0.3s;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-size: 25px;
+  font-weight: 800;
+  border-radius: 15px;
+}
+
+.brand h2 {
+  font-size: 17px;
+  color: #20233a;
+}
+
+.brand p {
+  color: #9295a8;
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+.theme-btn {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 13px;
+  background: #f0f1fa;
+  color: #555b85;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.display-section {
+  background: #f5f6fc;
   border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  padding: 20px;
+  margin-bottom: 22px;
+  min-width: 0;
 }
 
-.calculator-title {
-  text-align: center;
-  margin-bottom: 20px;
+.display-label {
+  color: #999db3;
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 700;
 }
 
-.calculator-title h2 {
-  color: #333;
-  margin-bottom: 5px;
-}
-
-.calculator-title p {
-  color: #888;
-  font-size: 13px;
+.previous {
+  text-align: right;
+  min-height: 27px;
+  margin-top: 15px;
+  color: #9699ac;
+  font-size: 14px;
+  overflow-wrap: anywhere;
 }
 
 #display {
   width: 100%;
-  height: 75px;
+  min-width: 0;
   border: none;
   outline: none;
-  background: #f1f3f8;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  padding: 15px;
+  background: transparent;
   text-align: right;
-  font-size: 30px;
-  color: #333;
+  font-size: clamp(28px, 8vw, 38px);
+  font-weight: 700;
+  color: #252944;
+  margin-top: 8px;
 }
 
 .buttons {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
 }
 
-button {
-  height: 60px;
+.buttons button {
+  min-width: 0;
+  height: 63px;
   border: none;
-  border-radius: 12px;
-  background: #f1f3f8;
+  border-radius: 16px;
+  background: #f2f3fa;
+  color: #353952;
   font-size: 20px;
-  font-weight: bold;
-  color: #333;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 3px 8px rgba(30,30,70,0.04);
 }
 
-button:hover {
-  background: #dfe3ed;
-  transform: scale(1.05);
+.buttons button:hover {
+  transform: translateY(-3px);
+  background: #e5e8f7;
 }
 
-.operator {
-  background: #e5e9ff;
-  color: #5265d8;
+.buttons button:active {
+  transform: scale(0.94);
 }
 
-.clear {
-  background: #ffdddd;
-  color: #e53935;
+.buttons .special {
+  background: #e9eaff;
+  color: #626ee5;
 }
 
-.equal {
-  background: #667eea;
+.buttons .operator {
+  background: #e7eaff;
+  color: #6674e9;
+  font-size: 24px;
+}
+
+.buttons .equal {
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  grid-row: span 2;
-  height: auto;
+  box-shadow: 0 7px 16px rgba(102,126,234,0.3);
 }
 
-.zero {
-  grid-column: span 2;
+.history-section {
+  margin-top: 28px;
 }
 
+.history-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.history-heading h3 {
+  font-size: 14px;
+  color: #343852;
+}
+
+.history-heading button {
+  border: none;
+  background: transparent;
+  color: #6674e9;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.history {
+  max-height: 130px;
+  overflow-y: auto;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: 7px;
+  background: #f6f7fc;
+  border-radius: 10px;
+  font-size: 12px;
+  color: #777b93;
+}
+
+.history-item strong {
+  color: #343852;
+}
+
+.empty {
+  text-align: center;
+  color: #a1a4b5;
+  font-size: 12px;
+  padding: 12px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 25px;
+  color: #a1a4b5;
+  font-size: 10px;
+}
+
+/* Dark mode */
+
+body.dark {
+  background: linear-gradient(135deg, #111528, #24203d);
+}
+
+body.dark .calculator {
+  background: #1c2035;
+  border-color: #303650;
+}
+
+body.dark .brand h2,
+body.dark .history-heading h3 {
+  color: #f2f3ff;
+}
+
+body.dark .display-section,
+body.dark .history-item {
+  background: #272c44;
+}
+
+body.dark #display,
+body.dark .history-item strong {
+  color: #fff;
+}
+
+body.dark .buttons button {
+  background: #292f49;
+  color: #e9eaff;
+}
+
+body.dark .buttons .operator,
+body.dark .buttons .special {
+  background: #343c65;
+  color: #aeb8ff;
+}
+
+body.dark .buttons .equal {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+body.dark .theme-btn {
+  background: #343c65;
+  color: white;
+}
+
+body.dark footer,
+body.dark .brand p {
+  color: #9da3bf;
+}
+
+/* Mobile responsive */
+
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+    align-items: flex-start;
+  }
+
+  .calculator {
+    margin: auto 0;
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .buttons {
+    gap: 9px;
+  }
+
+  .buttons button {
+    height: 58px;
+    border-radius: 13px;
+    font-size: 18px;
+  }
+
+  footer {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 350px) {
+  .calculator {
+    padding: 13px;
+  }
+
+  .buttons button {
+    height: 52px;
+  }
+}
